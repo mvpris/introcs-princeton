@@ -1,0 +1,40 @@
+Observation: One for loop (order of growth n-linear) which has a call to bernoulli (order of growth 1-constant because
+             it generates one random value, compares it to >0.5 and returns boolean true/false) and also has a string
+             concatenation operation, assigns char 0/1 to string depending on bernoulli result. String concatenation
+             involves creating a new char array of length n+m (n=length of current char array, m=length of array to be added),
+             then copy char values of current array to new array which involves a for loop (order of growth n-linear),
+             then copy char values of array to be added to new array starting at index n, so another for loop (order of
+             growth n-linear), but in this case considering the char to be added is only one char, then m=1. Finally,
+             this function has two constant time commands and 2 for loops inside another for loop.
+Hypothesis:  Order of growth of running time might be quadratic n^2 (of form n(2n+2)-> 2n^2+2)
+Experiment:  Running program with doubling the value of size input n and expect the running time to increase quadratically
+             (quadrupling, ie times 4 or 2^2 if n=2) with double the size input.
+Analysis:    Collected data in terms of running times (miliseconds) and ratios of running times (current/previous)
+             and ploted the sizes vs the times on a log-log plot. The running times seem to quadruple with doubling the input
+             and the ratios seem to converge around the value of 4.
+Conclusion:  The analysis confirms the hypothesis and shows that the order of growth of running times is quadratic.
+
+java app4116 11 1024
+Times:
+    1024 0.029
+    2048 0.002
+    4096 0.005
+    8192 0.009
+   16384 0.052
+   32768 0.093
+   65536 0.269
+  131072 0.918
+  262144 2.871
+  524288 11.477
+ 1048576 46.494
+Ratios:
+    2048 0.07
+    4096 2.50
+    8192 1.80
+   16384 5.78
+   32768 1.79
+   65536 2.89
+  131072 3.41
+  262144 3.13
+  524288 4.00
+ 1048576 4.05

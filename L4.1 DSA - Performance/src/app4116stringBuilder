@@ -1,0 +1,69 @@
+Observation: One for loop (order of growth n-linear) which has a call to bernoulli (order of growth 1-constant because
+             it generates one random value, compares it to >0.5 and returns boolean true/false) and also has a string
+             builder operation, assigns char 0/1 to string depending on bernoulli result. I don't know how string builder
+             operates in the background, but I know it's has a faster running time than string concatenation, but if
+             I had to guess, it should involve an assignment statement of the char to be appended.
+Hypothesis:  Order of growth of running time might be linear, because of one assignment statement (not a for loop as
+             in the case of string concatenation). The final toString() operation should also be linear in time, but it
+             should not change the overall order of growth.
+Experiment:  Running program with doubling the value of size input n and expect the running time to increase linearly
+             (doubling, ie times 2) with double the size input.
+Analysis:    Collected data in terms of running times (miliseconds) and ratios of running times (current/previous)
+             and ploted the sizes vs the times on a log-log plot. The running times seem to double with doubling the input
+             and the ratios seem to converge around the value of 2.
+Conclusion:  The analysis confirms the hypothesis and shows that the order of growth of running times is linear.
+
+CopilotAI response on prompt "what's the difference between the two code fragments (string concatenation vs stringBuilder)":
+
+             In Java, both String and StringBuilder internally use an array of char values to store the characters.
+             However, the key difference lies in how they handle modifications to the character sequence.
+
+             When you concatenate strings using the + operator, a new String object is created each time because String
+             objects are immutable in Java. This means that once a String object is created, it cannot be changed.
+             So, every time you do s += "0"; or s += "1";, a new String object is created, and all the characters from
+             the old String and the new character are copied over. This operation takes linear time, and doing it n times
+             results in quadratic time complexity.
+
+             On the other hand, StringBuilder is mutable. It maintains an array of char values, but when you call
+             sb.append("0"); or sb.append("1");, it simply adds the new character at the end of the existing character
+             sequence in the same StringBuilder object. If the internal array of char values is not large enough
+             to accommodate the new character, a larger array is created, and the old characters are copied over.
+             However, the size of the new array is usually double the size of the old array, so this situation
+             (called an array resize operation) does not occur very often. As a result, the amortized time complexity
+             (i.e., the total time for n operations divided by n) of the append() operation is constant, which means
+             that the total time complexity for n append operations is linear.
+
+             I hope this clarifies the difference between String concatenation and StringBuilder append operation in Java.
+
+java app4116stringBuilder 15 16384
+Times:
+   16384 0.004
+   32768 0.002
+   65536 0.003
+  131072 0.005
+  262144 0.006
+  524288 0.019
+ 1048576 0.028
+ 2097152 0.056
+ 4194304 0.104
+ 8388608 0.218
+16777216 0.405
+33554432 0.830
+67108864 1.550
+134217728 2.932
+268435456 6.042
+Ratios:
+   32768 0.50
+   65536 1.50
+  131072 1.67
+  262144 1.20
+  524288 3.17
+ 1048576 1.47
+ 2097152 2.00
+ 4194304 1.86
+ 8388608 2.10
+16777216 1.86
+33554432 2.05
+67108864 1.87
+134217728 1.89
+268435456 2.06
