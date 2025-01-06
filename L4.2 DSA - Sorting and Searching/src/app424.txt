@@ -1,0 +1,26 @@
+Applying Binary Search to an Unordered Array
+Binary search relies on the array being sorted. If you apply binary search to an unordered array,
+the algorithm will not function correctly because it assumes that the middle element divides
+the array into two halves where one half contains elements less than the middle element and
+the other half contains elements greater than the middle element.
+In an unordered array, this assumption is violated, leading to incorrect results or infinite loops.
+
+Why Not Check if the Array is Sorted Before Each Call?
+Efficiency: Checking if an array is sorted before each call to binary search would negate the efficiency gains of
+binary search. The time complexity of checking if an array is sorted is (O(n)), which is the same as a linear search.
+This would make the binary search (O(n log n)) instead of (O(log n)), defeating its purpose.
+
+Checking Elements in Ascending Order
+Feasibility: While you could check if the elements binary search examines are in ascending order,
+this would also add overhead and complexity to the algorithm. Each comparison would require additional checks,
+which would slow down the search process.
+
+Practicality: In practice, it’s more efficient to ensure the array is sorted before performing binary search.
+Sorting the array once (if it’s not already sorted) and then performing binary search is more efficient than
+repeatedly checking order during the search.
+
+Conclusion
+Binary search is designed for sorted arrays. Applying it to an unordered array will not work correctly.
+Checking if the array is sorted before each call or checking the order of elements during the search would
+reduce the efficiency of the algorithm. Therefore, it’s best to sort the array first if it’s not already
+sorted before applying binary search

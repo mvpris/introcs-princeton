@@ -1,0 +1,31 @@
+1. Consistency
+Immutable keys ensure that the values do not change once they are created. This consistency is crucial for binary search,
+which relies on the keys being sorted. If keys were mutable and changed after sorting, the order could be disrupted,
+leading to incorrect search results.
+
+2. Reliability
+Immutable keys provide reliability in the search process. Since the keys cannot change, you can be confident that
+the sorted order remains intact throughout the search operation. This reliability is essential for maintaining
+the integrity of the search algorithm.
+
+3. Thread Safety
+Immutable objects are inherently thread-safe because their state cannot be modified after creation. This makes them
+ideal for use in concurrent applications where multiple threads might be accessing and searching the data simultaneously.
+
+4. Simplified Debugging
+With immutable keys, debugging becomes easier. Since the keys do not change, you can trace the state of the keys
+throughout the program without worrying about unexpected modifications. This simplifies the debugging process and helps
+in identifying issues more efficiently.
+
+5. Avoiding Side Effects
+Using immutable keys helps avoid side effects that can occur when objects are modified. Side effects can lead to
+unpredictable behavior and bugs that are difficult to track down. Immutable keys eliminate this risk by ensuring that
+the keys remain constant.
+
+Example
+Consider a scenario where you have a sorted array of keys, and you perform a binary search to find a specific key.
+If the keys were mutable and one of them changed during the search, the sorted order would be violated, and the binary
+search might fail to find the correct key or return incorrect results.
+
+By using immutable keys, you ensure that the sorted order is preserved, and the binary search algorithm can reliably
+find the target key.

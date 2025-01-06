@@ -1,0 +1,5 @@
+alice@home
+bob@office
+bob@office
+carl@beach
+dave@boat
