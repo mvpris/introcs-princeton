@@ -1,0 +1,8 @@
+Constitution.txt
+TomSawyer.txt
+HuckFinn.txt
+Prejudice.txt
+Picture.java
+DJIA.csv
+https://introcs.cs.princeton.edu/java/33design/Amazon.html
+ATCG.txt
