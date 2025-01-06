@@ -1,0 +1,83 @@
+Function reverse1
+The function reverse1 iterates through the string and constructs the reversed string by prepending each character.
+Here is the breakdown:
+
+Initialization: int n = s.length(); takes constant time, O(1).
+Loop: The for loop runs n times, where n is the length of the string.
+String Concatenation: Inside the loop, reverse = s.charAt(i) + reverse; takes O(n) time because string concatenation in
+Java creates a new string each time, which involves copying the existing characters.
+
+Therefore, the total time complexity for reverse1 is:
+O(1)+O(n)⋅O(n)=O(n2)
+Function reverse2
+The function reverse2 uses recursion to reverse the string by dividing it into two halves. Here is the breakdown:
+
+Base Case: If the length of the string is 1 or less, it returns the string, which takes constant time, O(1).
+Recursive Case: The function splits the string into two halves and recursively reverses each half. The substring method takes O(n) time.
+
+The recurrence relation for the running time T(n) is:
+T(n)=2T(n/2)+O(n)
+Using the Master Theorem for divide-and-conquer recurrences, where a=2, b=2, and f(n)=O(n), we get:
+T(n)=O(nlogn)
+Summary
+
+reverse1: O(n2)
+reverse2: O(nlogn)
+
+If you have any more questions or need further clarification, feel free to ask!
+
+
+"How did you arrive at the conclusion that the recurrence relation for the running time T(n) is:
+ T(n)=2T(2n​)+O(n) for the second function?"
+
+ Function reverse2
+ The function reverse2 works by recursively splitting the string into two halves and then reversing each half. Here’s the function again for reference:
+ public static String reverse2(String s) {
+     int n = s.length();
+     if (n <= 1) return s;
+     String left = s.substring(0, n/2);
+     String right = s.substring(n/2, n);
+     return reverse2(right) + reverse2(left);
+ }
+
+ Analysis
+
+
+ Base Case: If the length of the string n is 1 or less, the function returns the string immediately. This takes constant time, O(1).
+
+
+ Recursive Case: If the length of the string n is greater than 1, the function performs the following steps:
+
+ Splits the string into two halves: left and right. This involves calling substring, which takes O(n) time.
+ Recursively reverses each half: reverse2(right) and reverse2(left).
+ Concatenates the results of the two recursive calls, which takes O(n) time.
+
+
+
+ Recurrence Relation
+ The time complexity T(n) for the function can be expressed as:
+ T(n)=2T(n/2)+O(n)
+ Here’s the reasoning:
+
+ 2T(n/2): The function makes two recursive calls, each on a substring of length n/2.
+ O(n): The time taken to split the string and concatenate the results.
+
+ Master Theorem
+ To solve this recurrence relation, we use the Master Theorem for divide-and-conquer recurrences of the form:
+ T(n)=aT(n/b)+f(n)
+ where a=2, b=2, and f(n)=O(n).
+ According to the Master Theorem:
+
+ If f(n)=O(nc) where c<log_b(a), then T(n)=O(n^log_b(a)).
+ If f(n)=O(nc) where c=log_b(a), then T(n)=O(nclogn).
+ If f(n)=O(nc) where c>log_b(a), then T(n)=O(f(n)).
+
+ In our case:
+
+ a=2
+ b=2
+ log_b(a)=log_2(2)=1
+ f(n)=O(n)
+
+ Since f(n)=O(n) and c=1, which is equal to log_b(a), we use the second case of the Master Theorem:
+ T(n)=O(nlogn)

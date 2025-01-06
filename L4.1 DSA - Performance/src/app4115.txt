@@ -1,0 +1,86 @@
+Observed: 2 nested for loops + 3 nested for loops + 2 nested for loops (inner loop is 3n matrix multiplication).
+Hypothesis: Order of growth of running time might be exponential.
+Experiment: Running program with doubling the value of n and expect the running time to increase exponentially (power
+            of 3 increase) with double the size input.
+Analysis: Collected data in terms of running times (miliseconds) and ratios (current/previous) and ploted the sizes vs
+          the times on a log-log plot. The running times seem to double with doubling the input and the ratios are
+          constantly around the value of 2. The plotted values of the function give a straight line at 45 degrees (slope=2)
+          therefore suggesting the order of growth is most definitely linear (or linearithmic).
+Conclusion: The analysis doesn't confirm the hypothesis, but actually shows that time complexity of program is linear.
+
+            All of the above (hypothesis,analysis,conclusion) is wrong. The order of growth of running time
+            is quadratic O(times*n^2).
+
+            The growth of the running time for the given Markov program is quadratic. This is because the dominant term
+            in the time complexity is O(trials⋅n2), where n is the size of the transition matrix and trials is the number
+            of iterations. So, the running time grows quadratically with respect to the size of the matrix n
+            and linearly with respect to the number of trials.
+
+
+            The running times you provided seem to indicate a different pattern than what we would expect from a purely
+            quadratic growth. Let’s analyze the ratios more closely.
+
+            For a quadratic growth, we would expect the running time to increase by a factor of 4 when the problem size
+            doubles. However, the ratios you provided are much smaller and do not follow this pattern.
+
+            Here are some observations:
+
+            The ratios are generally much less than 4, especially for smaller problem sizes.
+            As the problem size increases, the ratios start to increase but still do not reach 4.
+            This suggests that the actual running time of the program might be influenced by factors other than just
+            the theoretical time complexity. Possible reasons for this discrepancy could include:
+
+            1. Constant Factors and Lower Order Terms: In practical scenarios, constant factors and lower-order terms can
+            significantly affect the running time, especially for smaller problem sizes.
+
+            2. System and Environmental Factors: The performance of the program can be influenced by the system it is
+            running on, including CPU, memory, and other processes running concurrently.
+
+            3. Implementation Details: The specific implementation of the algorithm and the efficiency of operations like
+            reading from files can also impact the running time.
+
+            Given these observations, it seems that the running time of the Markov program in practice is not purely quadratic.
+            It might be more efficient than the theoretical worst-case scenario due to the reasons mentioned above.
+
+java app4115 20 512
+Times:
+     512 0.049
+    1024 0.006
+    2048 0.005
+    4096 0.003
+    8192 0.004
+   16384 0.004
+   32768 0.007
+   65536 0.015
+  131072 0.015
+  262144 0.024
+  524288 0.043
+ 1048576 0.090
+ 2097152 0.179
+ 4194304 0.186
+ 8388608 0.310
+16777216 0.584
+33554432 1.172
+67108864 2.169
+134217728 4.258
+268435456 8.427
+Ratios:
+    1024 0.12
+    2048 0.83
+    4096 0.60
+    8192 1.33
+   16384 1.00
+   32768 1.75
+   65536 2.14
+  131072 1.00
+  262144 1.60
+  524288 1.79
+ 1048576 2.09
+ 2097152 1.99
+ 4194304 1.04
+ 8388608 1.67
+16777216 1.88
+33554432 2.01
+67108864 1.85
+134217728 1.96
+268435456 1.98

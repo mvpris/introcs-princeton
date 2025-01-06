@@ -1,0 +1,22 @@
+Initialization:
+
+int[] a = new int[n]; runs in O(n) time.
+boolean[] taken = new boolean[n]; also runs in O(n) time.
+
+
+While Loop:
+
+The while (count < n) loop runs until count reaches n. Therefore, it iterates n times.
+Inside the loop, int r = StdRandom.uniform(n); generates a random integer between 0 and n−1, which runs in O(1) time.
+The if (!taken[r]) check runs in O(1) time.
+If the condition is true, the statements a[r] = count;, taken[r] = true;, and count++; each run in O(1) time.
+
+
+Overall Analysis:
+
+The while loop iterates n times.
+Each iteration involves a constant amount of work (all operations inside the loop are O(1)).
+
+
+Therefore, the total running time of the code is O(n) for the initialization plus O(n)×O(1) for the loop, which simplifies to O(n).
+So, the order of growth of the running time of this code fragment is O(n).

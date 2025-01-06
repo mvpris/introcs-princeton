@@ -1,0 +1,41 @@
+method1(int n):
+
+This function uses recursion and divides the problem size by 2 in each recursive call.
+The concatenation operation temp + temp or temp + temp + "x" takes linear time relative to the size of temp.
+The recurrence relation is T(n)=2T(n/2)+O(n)
+
+Solving this using the Master Theorem, we get T(n)=O(nlogn)
+
+
+method2(int n):
+
+This function uses a loop to concatenate the string “x” to s n times.
+Each concatenation operation takes linear time relative to the current length of s, leading to a quadratic time complexity.
+Therefore, the time complexity is O(n2)
+
+
+method3(int n):
+
+This function uses recursion and divides the problem size by 2 in each recursive call.
+The concatenation operation method3(n/2) + method3(n - n/2) takes linear time relative to the size of the strings being concatenated.
+The recurrence relation is T(n)=2T(n/2)+O(n)
+
+Solving this using the Master Theorem, we get T(n)=O(nlogn)
+
+
+method4(int n):
+
+This function uses a loop to fill a character array of size n with ‘x’.
+The loop runs n times, and each iteration takes constant time.
+Therefore, the time complexity is O(n)
+
+
+In summary:
+
+method1: O(nlogn)
+
+method2: O(n2)
+
+method3: O(nlogn)
+
+method4: O(n)
