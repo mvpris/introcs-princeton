@@ -1,0 +1,7 @@
+Turing
+10.24
+4
+103 ADBE
+90 IBM
+250 MSFT
+3 TEST
